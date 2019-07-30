@@ -1,5 +1,5 @@
 # Atomic-Automator
-Python Script to Automate some of the Atomic Red Team & Prepare a Box for Blue Team Training
+Python Script to automate some of the Atomic Red Team & prepare a box for Blue Team training
 ### README
 This script was inspired by the atomic red team (redcanaryco/atomic-red-team: Small and highly portable ... - GitHub
 https://github.com/redcanaryco/atomic-red-team)
@@ -12,6 +12,5 @@ The script allows you choose an area of emulation (Persistance, Credentail-Acces
 #### TO DO
 
 * Finish coding ATTACK scenarios
-* Add ability to clean up artifacts
 * Add Support for Ubuntu & OSX
 

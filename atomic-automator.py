@@ -36,6 +36,10 @@ banner = """
 [99] Exit
 ======================================================================================
 """
+
+if not os.geteuid()==0:
+    sys.exit('This script must be run as root! Try sudo python atomic-automator.py')
+    
 loop=True
 while loop:
     print(banner)
@@ -331,6 +335,7 @@ while loop:
         print ("Executing T1132 - Data Encoding")
         os.system("echo -n 555-555-5555 | base64 >> loot.txt")
         time.sleep(1)
+        print ("ALL DONE - RETURNING TO MAIN MENU2")
 
     elif x == 10:
         print("Cleaning this bad mother up")

@@ -1,5 +1,5 @@
-#Tool to help sys admins
-#author - Name Here
+#Tool to help cybersecurity
+#author - @libertyunix
 
 #Import our modules
 import sys

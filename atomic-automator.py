@@ -213,8 +213,6 @@ while loop:
         os.system("chmod +x /tmp/art.sh")
         os.system("bash /tmp/art.sh")
         time.sleep(1)
-        os.system("clear")
-        time.sleep(1)
         print "Executing - T1153 - Execute Script using Source"
         os.system("echo echo Hello from the Atomic Red Team >> /tmp/art1.sh")
         os.system("chmod +x /tmp/art1.sh")
@@ -237,10 +235,10 @@ while loop:
         os.system("clear")
         print "Executing T1166 - Setuid and Setgid"
         os.system("wget -P /tmp/ https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1166/hello.c")
-        #Modify downloaded hello demo to only sleep for 5 Seconds
+        #Modify downloaded hello demo to only sleep for 2 Seconds
         with open('/tmp/hello.c', 'r') as file :
             filedata = file.read()
-            filedata = filedata.replace ('60', '5')
+            filedata = filedata.replace ('60', '2')
         with open ('/tmp/hello.c', 'w') as file:
             file.write(filedata)
         os.system("gcc /tmp/hello.c -o /tmp/hello")
@@ -250,7 +248,6 @@ while loop:
         time.sleep(1)
         os.system("clear")
         time.sleep(2)
-        os.system("clear")
         print "Executing T1009 - Binary Padding"
         os.system("touch /tmp/pad.txt")
         os.system("dd if=/dev/zero bs=1 count=1 >> /tmp/pad.txt")

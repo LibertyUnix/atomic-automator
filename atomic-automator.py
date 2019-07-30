@@ -25,7 +25,7 @@ banner = """
 ================== A Tool for Adversarial Emulation on Linux ========================
                     Please Select An ATT&CK Tactic & Technique
 ======================================================================================
-[1] Exection
+[1] Execution
 [2] Persistance
 [3] Privilege-Escalation
 [4] Defense-Evasion

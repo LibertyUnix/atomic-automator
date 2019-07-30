@@ -1,6 +1,5 @@
-#Tool to help cybersecurity teams
-#author - @libertyunix
-#I am not programmer I am a hacker
+#Tool to help sys admins
+#author - Name Here
 
 #Import our modules
 import sys
@@ -25,7 +24,7 @@ banner = """
 ================== A Tool for Adversarial Emulation on Linux ========================
                     Please Select An ATT&CK Tactic & Technique
 ======================================================================================
-[1] Execution
+[1] Exection
 [2] Persistance
 [3] Privilege-Escalation
 [4] Defense-Evasion
@@ -166,7 +165,7 @@ while loop:
         os.system("arp -a | grep -v '^?' >> /tmp/loot.txt")
         time.sleep(1)
         #You can edit this to match your IP address and how many host you wish to scan
-        os.system ("for ip in $(seq 1 10); do ping -c 1 192.168.11.$ip -o; [ $? -eq 0 ] && echo 192.168.11.$ip UP || : ; done >> /tmp/loot.txt")
+        os.system ("for ip in $(seq 1 10); do ping -c 1 192.168.11.$ip ; [ $? -eq 0 ] && echo 192.168.11.$ip UP || : ; done >> /tmp/loot.txt")
         time.sleep(1)
         print("Executing T1082 - System Information Discovery")
         os.system("uname -a >> /tmp/loot.txt")
@@ -220,9 +219,7 @@ while loop:
         os.system("echo echo Hello from the Atomic Red Team >> /tmp/art1.sh")
         os.system("chmod +x /tmp/art1.sh")
         os.system("source /tmp/art1.sh")
-        time.sleep(1)
-        print "ALL DONE - RETURNING TO MAIN MENU"
-        time.sleep(3)
+        time.sleep(2)
         print "Executing T1156 - BashRC"
         os.system("echo Hello Atomic-Test >> ~/.bashrc")
         time.sleep(1)
@@ -252,7 +249,6 @@ while loop:
         os.system("/tmp/./hello")
         time.sleep(1)
         os.system("clear")
-        print "ALL DONE Privilege Escalation - RETURNING TO MAIN MENU"
         time.sleep(2)
         os.system("clear")
         print "Executing T1009 - Binary Padding"
@@ -277,7 +273,7 @@ while loop:
         time.sleep(1)
         print ("Executing T1145 - Private Keys")
         os.system("find / -name id_rsa >> /tmp/loot.txt")
-        os.system("find / -name id_dsa >> /tmp/loottxt")
+        os.system("find / -name id_dsa >> /tmp/loot.txt")
         time.sleep(1)
         print ("Executing T1087 - Account Discovery")
         os.system("cat /etc/passwd >> /tmp/loot.txt")
@@ -312,7 +308,7 @@ while loop:
         os.system("arp -a | grep -v '^?' >> /tmp/loot.txt")
         time.sleep(1)
         #You can edit this to match your IP address and how many host you wish to scan
-        os.system ("for ip in $(seq 1 10); do ping -c 1 192.168.11.$ip -o; [ $? -eq 0 ] && echo 192.168.11.$ip UP || : ; done >> /tmp/loot.txt")
+        os.system ("for ip in $(seq 1 10); do ping -c 1 192.168.11.$ip; [ $? -eq 0 ] && echo 192.168.11.$ip UP || : ; done >> /tmp/loot.txt")
         time.sleep(1)
         print("Executing T1082 - System Information Discovery")
         os.system("uname -a >> /tmp/loot.txt")

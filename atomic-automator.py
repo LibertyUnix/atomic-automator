@@ -1,4 +1,3 @@
-#Tool to help cybersecurity
 #author - @libertyunix
 
 #Import our modules
@@ -136,7 +135,6 @@ while loop:
         os.system("cat /etc/passwd >> /tmp/loot.txt")
         os.system("cat /etc/sudoers >> /tmp/loot.txt")
         os.system("grep 'x:0:' /etc/passwd >> /tmp/loot.txt")
-        os.system("username=$(echo $HOME | awk -F'/' '{print $3}') && lsof -u $username >> /tmp/users.txt")
         print "Executing T1139 - Bash History"
         os.system("cat ~/.bash_history | grep -e '-p ' -e 'pass' -e 'ssh' >> /tmp/loot.txt")
         os.system("find / -name id_rsa >> /tmp/rsa.txt")
@@ -276,7 +274,6 @@ while loop:
         os.system("cat /etc/passwd >> /tmp/loot.txt")
         os.system("cat /etc/sudoers >> /tmp/loot.txt")
         os.system("grep 'x:0:' /etc/passwd >> /tmp/loot.txt")
-        os.system("username=$(echo $HOME | awk -F'/' '{print $3}') && lsof -u $username >> /tmp/users.txt")
         print "Executing T1139 - Bash History"
         os.system("cat ~/.bash_history | grep -e '-p ' -e 'pass' -e 'ssh' >> /tmp/loot.txt")
         os.system("find / -name id_rsa >> /tmp/rsa.txt")
@@ -303,7 +300,6 @@ while loop:
         time.sleep(1)
         print("Executing T1018 - Remote System Discovery")
         os.system("arp -a | grep -v '^?' >> /tmp/loot.txt")
-        time.sleep(1)
         #You can edit this to match your IP address and how many host you wish to scan
         os.system ("for ip in $(seq 1 10); do ping -c 1 192.168.11.$ip; [ $? -eq 0 ] && echo 192.168.11.$ip UP || : ; done >> /tmp/loot.txt")
         time.sleep(1)

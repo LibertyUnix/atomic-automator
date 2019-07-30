@@ -11,6 +11,6 @@ The script allows you choose an area of simlation (Persistance, Credentail-Acces
 
 #### TO DO
 
-* Finsh coding ATTACK scenarois.
+* Finsh coding ATTACK scenarois
 * Add ability to clean up artifacts
 * Add Support for Ubuntu & OSX

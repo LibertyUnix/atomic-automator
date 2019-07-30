@@ -1,4 +1,4 @@
-# atomic-automator
+# Atomic-Automator
 Python Script to Automate some of the Atomic Red Team & Prepare a Box for Blue Team Training
 ### README
 This script was inspired by the atomic red team (redcanaryco/atomic-red-team: Small and highly portable ... - GitHub

